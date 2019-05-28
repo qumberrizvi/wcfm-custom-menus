@@ -30,6 +30,7 @@ function wcfmcsm_query_vars( $query_vars ) {
 		'wcfm-upgrade'             => ! empty( $wcfm_modified_endpoints['wcfm-upgrade'] ) ? $wcfm_modified_endpoints['wcfm-upgrade'] : 'upgrade',
 		'wcfm-contact'             => ! empty( $wcfm_modified_endpoints['wcfm-contact'] ) ? $wcfm_modified_endpoints['wcfm-contact'] : 'contact',
 		'wcfm-appointment'         => ! empty( $wcfm_modified_endpoints['wcfm-appointment'] ) ? $wcfm_modified_endpoints['wcfm-appointment'] : 'appointment',
+		'wcfm-subs'                => ! empty( $wcfm_modified_endpoints['wcfm-subs']) ? $wcfm_modified_endpoints['wcfm-subs'] : 'subs',
 	);
 
 	$query_vars = array_merge( $query_vars, $query_custom_menus_vars );
@@ -47,22 +48,25 @@ function wcfmcsm_endpoint_title( $title, $endpoint ) {
 		case 'wcfm-build' :
 			$title = __( 'Artist Subscription', 'wcfm-custom-menus' );
 		break;
-		//
-		// case 'wcfm-service' :
-		// 	$title = __( 'Service', 'wcfm-custom-menus' );
-		// break;
-		//
-		// case 'wcfm-upgrade' :
-		// 	$title = __( 'Upgrade', 'wcfm-custom-menus' );
-		// break;
-		//
-		// case 'wcfm-contact' :
-		// 	$title = __( 'Contact', 'wcfm-custom-menus' );
-		// break;
-		//
-		// case 'wcfm-appointment' :
-		// 	$title = __( 'Appointment', 'wcfm-custom-menus' );
-		// break;
+
+		case 'wcfm-service' :
+			$title = __( 'Service', 'wcfm-custom-menus' );
+		break;
+
+		case 'wcfm-upgrade' :
+			$title = __( 'Upgrade', 'wcfm-custom-menus' );
+		break;
+
+		case 'wcfm-contact' :
+			$title = __( 'Contact', 'wcfm-custom-menus' );
+		break;
+
+		case 'wcfm-appointment' :
+			$title = __( 'Appointment', 'wcfm-custom-menus' );
+		break;
+		case 'wcfm-subs':
+			$title = __('Subscriptions', 'wcfm-custom-menus');
+			break;
 	}
 
 	return $title;
@@ -98,6 +102,7 @@ function wcfm_custom_menus_endpoints_slug( $endpoints ) {
 												'wcfm-upgrade'      => 'upgrade',
 												'wcfm-contact'      => 'contact',
 												'wcfm-appointment'  => 'appointment',
+												'wcfm-subs'					=> 'subs'
 												);
 
 	$endpoints = array_merge( $endpoints, $custom_menus_endpoints );
@@ -145,7 +150,12 @@ function wcfmcsm_wcfm_menus( $menus ) {
 													// 															 'url'       => get_wcfm_custom_menus_url( 'wcfm-appointment' ),
 													// 															 'icon'      => 'cubes',
 													// 															 'priority'  => 5.5
-													// 															)
+													// 															),
+													'wcfm-subs' => array(   'label'  => __( 'Subscriptions', 'wcfm-custom-menus'),
+																												 'url'       => get_wcfm_custom_menus_url( 'wcfm-subs' ),
+																												 'icon'      => 'cubes',
+																												 'priority'  => 5.5
+																												)
 											);
 
 	$menus = array_merge( $menus, $custom_menus );
@@ -181,6 +191,10 @@ function wcfm_csm_load_views( $end_point ) {
 		case 'wcfm-appointment':
 			require_once( $plugin_path . 'views/wcfm-views-appointment.php' );
 		break;
+
+		case 'wcfm-subs':
+			require_once($plugin_path . 'views/wcfm-views-subs.php');
+			break;
 	}
 }
 add_action( 'wcfm_load_views', 'wcfm_csm_load_views', 50 );
