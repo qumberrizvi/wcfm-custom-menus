@@ -3,7 +3,7 @@ global $WCFM, $wp_query;
 
 ?>
 
-<div class="collapse wcfm-collapse" id="wcfm_upgrade_listing">
+<div class="collapse wcfm-collapse" id="wcfm_success_listing">
 
 	<div class="wcfm-page-headig">
 		<span class="fa fa-cubes"></span>
@@ -12,7 +12,7 @@ global $WCFM, $wp_query;
 	</div>
 	<div class="wcfm-collapse-content">
 		<div id="wcfm_page_load"></div>
-		<?php do_action( 'before_wcfm_upgrade' ); ?>
+		<?php do_action( 'before_wcfm_success' ); ?>
 
 		<div class="wcfm-container wcfm-top-element-container">
 			<h2><?php _e('Success', 'wcfm-custom-menus' ); ?></h2>
@@ -22,10 +22,10 @@ global $WCFM, $wp_query;
 
 
 		<div class="wcfm-container">
-			<div id="wcfm_upgrade_listing_expander" class="wcfm-content">
+			<div id="wcfm_success_listing_expander" class="wcfm-content">
 
 				<!---- Add Content Here ----->
-				<p style="text-align:center;"> Thanks for that! :)</p>
+				<p style="text-align:center;"> Payment received. Thank you! :)</p>
 
 				<div class="wcfm-clearfix"></div>
 			</div>
@@ -34,7 +34,7 @@ global $WCFM, $wp_query;
 
 		<div class="wcfm-clearfix"></div>
 		<?php
-		do_action( 'after_wcfm_upgrade' );
+		do_action( 'after_wcfm_success' );
 		?>
 	</div>
 </div>

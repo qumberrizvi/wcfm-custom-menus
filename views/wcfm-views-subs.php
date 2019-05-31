@@ -26,7 +26,7 @@ global $WCFM, $wp_query;
 
 				<!----- Add Content Here ----->
 				<?php
-				echo do_shortcode( '[go_pricing id="c14bigblue_5ce7cfde934c3"]' );
+				echo do_shortcode( '[go_pricing id="c14bigblue_5cef8d584b5a4"]' );
 				?>
 
 				<div class="wcfm-clearfix"></div>
